@@ -1,6 +1,7 @@
 import axios from "axios";
 import express from "express";
 import bodyParser from "body-parser";
+import "dotenv/config"
 
 const port = 3000;
 const app = express();
