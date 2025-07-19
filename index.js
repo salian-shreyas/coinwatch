@@ -28,6 +28,30 @@ app.get("/", async (req, res) => {
     }  
 });
 
+// Render coin-page for coinid 
+app.get("/coin/:coinid", async (req, res) => {
+    const coinid = req.params.coinid;
+
+    try {
+        const response = await axios.get(
+            API_URL + 'coins/markets',
+            {
+                headers: { 'x-cg-demo-api-key': API_KEY },
+                params: {
+                    'vs_currency': 'inr',
+                    'ids': coinid,
+                    'price_change_percentage': '24h',
+                },
+            }
+        );
+        console.log(response.data);
+        res.render("coin.ejs", { coin: response.data[0] });
+    } catch (error) {
+       console.log(error); 
+       res.sendStatus(404);
+    }  
+})
+
 app.listen(port, () => {
     console.log(`CoinWatch: server running on port ${port}`);
 });

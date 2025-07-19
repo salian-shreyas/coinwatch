@@ -1,0 +1,24 @@
+<%- include('partials/header.ejs') %>
+
+<main>
+    <% if(locals.coin) { %>
+        <div>
+            <h2><%= coin.name %></h2>            
+            <h2><%= coin.symbol %></h2>
+            <img src= <%= coin.image %> alt= <%= `${ coin.name } image` %> >
+        </div>
+        <div>
+            <ul>
+                <li>Price: &#8377; <%= coin.current_price %></li>
+                <li>ATH: &#8377; <%= coin.ath %></li>
+                <li>24H High: &#8377; <%= coin.high_24h %></li>
+                <li>24H Low: &#8377; <%= coin.low_24h %></li>
+                <li>24H Change<%= `${coin.price_change_percentage_24h_in_currency.toFixed(2)} %` %></li>
+                <li>Market Cap: &#8377; <%= coin.market_cap %></li>
+                <li>Total Volume: <%= coin.total_volume %></li>
+            </ul>
+        </div>
+    <% } %>
+</main>
+
+<%- include('partials/footer.ejs') %>

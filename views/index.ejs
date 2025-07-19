@@ -5,11 +5,13 @@
     <ul class="coins-list">
         <% coins.forEach(coin => { %>
             <li>
-                <img src= <%= coin.image %> alt= <%= `${ coin.name } image` %> >
-                <h3> <%= coin.name %></h3>
-                <h3> <%= coin.symbol %></h3>
-                <div> &#8377; <%= coin.current_price %></div>
-                <div> <%= `${coin.price_change_percentage_24h_in_currency.toFixed(2)} %` %></div>
+                <a href="coin/<%= coin.id %>">
+                    <img src= <%= coin.image %> alt= <%= `${ coin.name } image` %> >
+                    <h3> <%= coin.name %></h3>
+                    <h3> <%= coin.symbol %></h3>
+                    <div> &#8377; <%= coin.current_price %></div>
+                    <div> <%= `${coin.price_change_percentage_24h_in_currency.toFixed(2)} %` %></div>
+                </a>
             </li>
         <% }); %>    
     </ul>
